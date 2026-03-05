@@ -10,4 +10,8 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'ioc-angular-filmateca-david';
+
+  constructor() {
+    console.log('Filmateca iniciada correctament - Aplicació desenvolupada per David Llamas');
+  }
 }
