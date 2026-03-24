@@ -1,1 +1,15 @@
-<p>barra-cerca works!</p>
+<form class="formulari-cerca" (ngSubmit)="cercar()" #formCerca="ngForm">
+    <div class="grup-camp">
+        <label for="camp-cerca">Cercar elements:</label>
+        <div class="contenidor-input">
+            <input type="text" id="camp-cerca" name="cerca" [(ngModel)]="textCerca" placeholder="Minim 3 caràcters" minlength="3" class="input-cerca" [class.invalid]="campCerca.invalid && campCerca.touched" #campCerca="ngModel">
+            <button type="submit" class="boto-cerca" [disabled]="formCerca.invalid" aria-label="Cercar elements" >
+                <i class="bi bi-search"></i>Cercar
+            </button>
+            <button type="button" class="boto-netejar" (click)="netejar()" *ngIf="textCerca" aria-label="Esborrar cerca">
+                <i class="bi bi-x-lg"></i> Netejar   
+            </button>
+        </div>
+
+    </div>
+</form>
