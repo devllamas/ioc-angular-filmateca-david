@@ -1,1 +1,10 @@
-<p>targeta-pelicula works!</p>
+<article class="targeta">
+    <img [src]="pelicula.cartell" alt="Cartell de {{pelicula.titol}}" class="cartell">
+    <div class="contingut-text">
+        <h2>{{pelicula.titol}}</h2>
+        <p class="meta-info"><strong>Director:</strong> {{pelicula.director}}</p>
+        <p class="meta-info"><strong>Any:</strong> {{pelicula.any}}</p>
+        <p class="meta-info"><strong>Durada:</strong> {{pelicula.durada}} minuts</p>
+        <p class="sinopsis">{{pelicula.sinopsis}}</p>
+    </div>
+</article>
