@@ -15,5 +15,20 @@ import { BarraCercaComponent } from './components/barra-cerca/barra-cerca.compon
 })
 export class AppComponent {
   title = 'ioc-angular-filmateca-david';
-  pelicules: Pelicula[] = PELICULES_MOCK
+  pelicules: Pelicula[] = PELICULES_MOCK;
+  peliculesFiltrades: Pelicula[] = this.pelicules;
+  textCercaActual: string = '';
+
+  filtrarPelicules(textCerca: string): void {
+    this.textCercaActual = textCerca;
+    if (!textCerca) {
+      this.peliculesFiltrades = this.pelicules;
+    } else {
+      const cercaMinuscules = textCerca.toLocaleLowerCase();
+      this.peliculesFiltrades = this.pelicules.filter(pelicula => pelicula.titol.toLocaleLowerCase().includes(cercaMinuscules)) ||
+        this.pelicules.filter(pelicula => pelicula.director.toLocaleLowerCase().includes(cercaMinuscules)) ||
+        this.pelicules.filter(pelicula => pelicula.sinopsis.toLocaleLowerCase().includes(cercaMinuscules)) ||
+        this.pelicules.filter(pelicula => pelicula.any.toString().includes(cercaMinuscules));
+    }
+  }
 }
