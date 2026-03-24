@@ -1,1 +1,11 @@
-<p>llista-pelicules works!</p>
+<section class="llistat">
+    <div class="missatge-buit" *ngIf="pelicules.length === 0">
+        No hi ha elements disponibles.
+    </div>
+    <div class="graella" *ngIf="pelicules.length > 0">
+        <app-targeta-pelicula
+            *ngFor="let pelicula of pelicules; trackBy: trackById"
+            [pelicula]="pelicula"
+        ></app-targeta-pelicula>
+    </div>
+</section>
