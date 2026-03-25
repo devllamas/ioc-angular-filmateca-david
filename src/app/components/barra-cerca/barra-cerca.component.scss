@@ -75,3 +75,10 @@
     color: var(--text-color);
     transition: background-color 0.2s, color 0.2s;
 }
+
+.missatge-error {
+    color: #dc3545; 
+    font-size: 0.875rem;
+    margin-top: 5px;
+    display: block;
+}

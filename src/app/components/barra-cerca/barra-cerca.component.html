@@ -2,7 +2,7 @@
     <div class="grup-camp">
         <label for="camp-cerca">Cercar películ·les:</label>
         <div class="contenidor-input">
-            <input type="text" id="camp-cerca" name="cerca" [(ngModel)]="textCerca" placeholder="Minim 3 caràcters" required minlength="3" class="input-cerca" #campCerca="ngModel" aria-describedby="error-busqueda" [attr.aria-invalid]="campCerca.invalid && campCerca.touched">
+            <input type="text" id="camp-cerca" name="cerca" [(ngModel)]="textCerca" placeholder="Minim 3 caràcters" required minlength="3" (focus)="focusDins = true" (blur)="focusDins = false" class="input-cerca" #campCerca="ngModel" aria-describedby="error-busqueda" [attr.aria-invalid]="campCerca.invalid && campCerca.touched">
             <button type="submit" class="boto-cerca" [disabled]="formCerca.invalid" aria-label="Cercar películ·les a la llista" >
                 <i class="bi bi-search" aria-hidden="true"></i>Cercar
             </button>
@@ -10,6 +10,9 @@
                 <i class="bi bi-x-lg" aria-hidden="true"></i> Netejar   
             </button>
         </div>
-
+        <div class="missatge-error" *ngIf="campCerca.invalid && campCerca.dirty && focusDins" aria-live="polite" id="error-busqueda">
+                <small *ngIf="campCerca.errors?.['required']">El camp de cerca no pot estar buit.</small>
+            <small *ngIf="campCerca.errors?.['minlength']">Cal introduir un mínim de 3 caràcters.</small>
+        </div>
     </div>
 </form>

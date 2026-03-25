@@ -13,6 +13,7 @@ export class BarraCercaComponent {
   @Output() cercaCanviada = new EventEmitter<string>();
 
   textCerca: string = '';
+  focusDins: boolean = false;
   
   cercar() {
     if (this.textCerca.length >= 3) {
