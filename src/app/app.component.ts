@@ -5,11 +5,14 @@ import { LlistaPeliculesComponent } from './components/llista-pelicules/llista-p
 import { Pelicula } from './models/pelicula.model';
 import { PELICULES_MOCK } from './mocks/dades-mock';
 import { BarraCercaComponent } from './components/barra-cerca/barra-cerca.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TargetaPeliculaComponent, LlistaPeliculesComponent, BarraCercaComponent],
+  imports: [RouterOutlet, TargetaPeliculaComponent, LlistaPeliculesComponent, BarraCercaComponent, FormsModule, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

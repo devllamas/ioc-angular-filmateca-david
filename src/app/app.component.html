@@ -1,4 +1,22 @@
 <main>
-  <app-barra-cerca></app-barra-cerca>
-  <app-llista-pelicules [pelicules]="pelicules"></app-llista-pelicules>
+  <header>
+    <h1>{{title}}</h1>
+  </header>
+
+  <app-barra-cerca (cercaCanviada)="filtrarPelicules($event)"></app-barra-cerca>
+  <div>
+    <div *ngIf="textCercaActual" class="info-resultats">
+      <p>
+        <strong> {{peliculesFiltrades.length}}</strong>
+        {{peliculesFiltrades.length === 1 ? 'resultat' : 'resultats'}} per <em>{{textCercaActual}}</em>
+      </p>
+    </div>
+    <app-llista-pelicules *ngIf="peliculesFiltrades.length > 0" [pelicules]="peliculesFiltrades"></app-llista-pelicules>
+    <div *ngIf="peliculesFiltrades.length === 0 && textCercaActual" class="estat-buit">
+      <p>🔍 No s'han trobat elements per <strong>"{{ textCercaActual }}"</strong></p>
+          <p class="suggeriment">Prova amb un altre terme de cerca</p>
+
+    </div>
+  </div>
+
 </main>
