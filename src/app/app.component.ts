@@ -22,6 +22,18 @@ export class AppComponent {
   peliculesFiltrades: Pelicula[] = this.pelicules;
   textCercaActual: string = '';
 
+  isDarkMode: boolean = false;
+
+
+  toggleDarkMode(): void {
+    this.isDarkMode = !this.isDarkMode;
+    if (this.isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }
+
   filtrarPelicules(textCerca: string): void {
     this.textCercaActual = textCerca;
     if (!textCerca) {

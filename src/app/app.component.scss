@@ -1,0 +1,43 @@
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+
+.btn-mode {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: var(--text-color);
+    background-color: var(--accent-color);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.estat-buit {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: var(--empty-bg);
+    border: 1px solid var(--empty-border);
+    border-radius: 8px;
+    color: var(--text-color);
+}
+
+p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+p.suggeriment {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}

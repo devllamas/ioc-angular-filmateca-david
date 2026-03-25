@@ -1,6 +1,9 @@
 <main>
   <header>
     <h1>{{title}}</h1>
+    <button class="btn-mode" (click)="toggleDarkMode()">
+      {{ isDarkMode ? '☀️ Clar' : '🌙 Fosc' }}
+    </button>
   </header>
 
   <app-barra-cerca (cercaCanviada)="filtrarPelicules($event)"></app-barra-cerca>

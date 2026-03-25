@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --empty-bg: #f8f9fa;
+    --empty-border: #fcc419;
+    --bg-color: #aecdec;
+    --card-bg: #ffffff;
+    --text-color: #212529;
+    --accent-color: #01b4e4;
+}
+
+body.dark-mode {
+    --empty-bg: #2c2401;
+    --empty-border: #fcc419;
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-color: #f8f9fa;
+    --accent-color: #01b4e4;
+    --border-color: #33333;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: 0.3s;
+}
+
