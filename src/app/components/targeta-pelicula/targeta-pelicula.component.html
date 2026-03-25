@@ -1,12 +1,15 @@
-<article class="targeta">
-    <img [src]="pelicula.cartell" alt="Cartell de {{pelicula.titol}}" class="cartell">
+<article class="targeta" [aria-labelledby]="'titol-' + pelicula.id">
+    <img [src]="pelicula.cartell" [alt]="'Cartell de ' + pelicula.titol" class="cartell">
     <div class="contingut-text">
-        <h2>{{pelicula.titol}}</h2>
+        <h2 [id]="'titol-' + pelicula.id" >{{pelicula.titol}}</h2>
         <p class="meta-info"><strong>Director:</strong> {{pelicula.director}}</p>
         <p class="meta-info"><strong>Any:</strong> {{pelicula.any}}</p>
         <p class="meta-info"><strong>Durada:</strong> {{pelicula.durada}} minuts</p>
         <p class="sinopsis"><strong>Sinopsis:</strong> {{ mostrarSinopsisCompleta? pelicula.sinopsis : (pelicula.sinopsis | slice:0:150) +'...' }}</p>
-        <button class="boto-sinopsis" (click)="toggleSinopsis()">
+        <button class="boto-sinopsis" 
+                (click)="toggleSinopsis()"
+                [aria-expanded]="mostrarSinopsisCompleta"
+                [aria-label]="mostrarSinopsisCompleta ? 'Llegir menys de ' + pelicula.titol : 'Llegir més de ' + pelicula.titol">
             {{ mostrarSinopsisCompleta? 'Mostrar menys' : 'Mostrar més' }}
         </button>
     </div>
