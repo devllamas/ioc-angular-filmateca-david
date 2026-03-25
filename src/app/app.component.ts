@@ -28,10 +28,12 @@ export class AppComponent {
       this.peliculesFiltrades = this.pelicules;
     } else {
       const cercaMinuscules = textCerca.toLocaleLowerCase();
-      this.peliculesFiltrades = this.pelicules.filter(pelicula => pelicula.titol.toLocaleLowerCase().includes(cercaMinuscules)) ||
-        this.pelicules.filter(pelicula => pelicula.director.toLocaleLowerCase().includes(cercaMinuscules)) ||
-        this.pelicules.filter(pelicula => pelicula.sinopsis.toLocaleLowerCase().includes(cercaMinuscules)) ||
-        this.pelicules.filter(pelicula => pelicula.any.toString().includes(cercaMinuscules));
+      this.peliculesFiltrades = this.pelicules.filter(pelicula => 
+          pelicula.titol.toLowerCase().includes(cercaMinuscules) ||
+          pelicula.sinopsis.toLowerCase().includes(cercaMinuscules) ||
+          pelicula.director.toLowerCase().includes(cercaMinuscules) ||
+          pelicula.any.toString().toLowerCase().includes(cercaMinuscules)
+        );  
     }
   }
 }
