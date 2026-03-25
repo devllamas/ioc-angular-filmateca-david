@@ -12,4 +12,9 @@ import { Pelicula } from '../../models/pelicula.model';
 export class TargetaPeliculaComponent {
   @Input({required: true}) pelicula!: Pelicula;
   
+  mostrarSinopsisCompleta: boolean = false;
+
+  toggleSinopsis() {
+    this.mostrarSinopsisCompleta = !this.mostrarSinopsisCompleta;
+  }
 }

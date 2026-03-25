@@ -5,6 +5,9 @@
         <p class="meta-info"><strong>Director:</strong> {{pelicula.director}}</p>
         <p class="meta-info"><strong>Any:</strong> {{pelicula.any}}</p>
         <p class="meta-info"><strong>Durada:</strong> {{pelicula.durada}} minuts</p>
-        <p class="sinopsis"><strong>Sinopsis:</strong> {{pelicula.sinopsis}}</p>
+        <p class="sinopsis"><strong>Sinopsis:</strong> {{ mostrarSinopsisCompleta? pelicula.sinopsis : (pelicula.sinopsis | slice:0:150) +'...' }}</p>
+        <button class="boto-sinopsis" (click)="toggleSinopsis()">
+            {{ mostrarSinopsisCompleta? 'Mostrar menys' : 'Mostrar més' }}
+        </button>
     </div>
 </article>
