@@ -1,25 +1,29 @@
 <main>
   <header>
     <h1>{{title}}</h1>
-    <button class="btn-mode" (click)="toggleDarkMode()">
+    <button class="btn-mode" (click)="toggleDarkMode()" [attr.aria-pressed]="isDarkMode" [attr.aria-label]="isDarkMode ? 'Canviar a mode clar' : 'Canviar a mode fosc'">
       {{ isDarkMode ? '☀️ Clar' : '🌙 Fosc' }}
     </button>
   </header>
 
   <app-barra-cerca (cercaCanviada)="filtrarPelicules($event)"></app-barra-cerca>
-  <div>
-    <div *ngIf="textCercaActual" class="info-resultats">
+  <section aria-labelledby="titol-resultats">
+   
+      <div *ngIf="textCercaActual" class="info-resultats" aria-live="polite">
       <p>
         <strong> {{peliculesFiltrades.length}}</strong>
         {{peliculesFiltrades.length === 1 ? 'resultat' : 'resultats'}} per <em>{{textCercaActual}}</em>
       </p>
     </div>
+
     <app-llista-pelicules *ngIf="peliculesFiltrades.length > 0" [pelicules]="peliculesFiltrades"></app-llista-pelicules>
-    <div *ngIf="peliculesFiltrades.length === 0 && textCercaActual" class="estat-buit">
+
+    <div *ngIf="peliculesFiltrades.length === 0 && textCercaActual" class="estat-buit" role="status">
       <p>🔍 No s'han trobat elements per <strong>"{{ textCercaActual }}"</strong></p>
           <p class="suggeriment">Prova amb un altre terme de cerca</p>
 
     </div>
-  </div>
+  </section>
+  
 
 </main>
