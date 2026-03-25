@@ -1,0 +1,43 @@
+.targeta {
+    display: flex;
+    border: 1px solid;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: cadetblue;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    min-height: 220px;;
+    margin: 25px 10px;
+}
+
+.cartell {
+    flex-shrink: 0;
+    width: 150px;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+.contingut-text {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--accent-color);
+    line-height: 1.2
+}
+
+.meta-info {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+}
+
+.sinopsis {
+    margin: 10px 0;
+    font-size: 0.95rem;
+}
