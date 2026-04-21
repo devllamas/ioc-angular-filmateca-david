@@ -32,3 +32,11 @@ export interface PeliculaCercaResponse {
   pelicules: PeliculaApiResponse[];
   total: number;
 }
+
+export type EstatServei = 'inicial' | 'carregant' | 'exit' | 'error';
+
+export interface EstatPelicules {
+  estat: EstatServei;
+  elements: PeliculaCataleg[];
+  error?: string;
+}
