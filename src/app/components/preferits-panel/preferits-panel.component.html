@@ -1,0 +1,22 @@
+
+<div class="preferits-panel">
+  <h2>Els meus preferits ({{ preferitsService.preferits().length }})</h2>
+
+  <!-- Llista de preferits -->
+  <div class="llista-preferits" *ngIf="preferitsService.preferits().length > 0">
+    <div class="preferit-item" *ngFor="let preferit of preferitsService.preferits()" [class.seleccionat]="preferitSeleccionat?.peliculaId === preferit.peliculaId">
+      <div class="preferit-info" (click)="seleccionarPreferit(preferit)">
+        <h3>{{ preferit.peliculaNom }}</h3>
+        <p class="data-afegit">Afegit: {{ preferit.dataAfegit | date:'dd/MM/yyyy HH:mm' }}</p>
+      </div>
+      <button class="btn-eliminar" (click)="eliminarPreferit(preferit.peliculaId)">🗑️</button>
+    </div>
+  </div>
+
+  <!-- Missatge si no hi ha preferits -->
+  <div class="sense-preferits" *ngIf="preferitsService.preferits().length === 0">
+    <p>No tens preferits encara</p>
+    <p class="ajuda">Fes clic a l'estrella d'un element per afegir-lo als preferits</p>
+  </div>
+
+</div>

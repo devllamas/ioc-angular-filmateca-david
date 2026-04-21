@@ -1,0 +1,92 @@
+.preferits-panel {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+
+  h2 {
+    margin: 0 0 1rem;
+    color: #333;
+  }
+}
+
+.llista-preferits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+
+  .preferit-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border: 2px solid #eee;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: #3498db;
+      background-color: #f8f9fa;
+    }
+
+    &.seleccionat {
+      border-color: #3498db;
+      background-color: #e3f2fd;
+    }
+
+    .preferit-info {
+      flex: 1;
+
+      h3 {
+        margin: 0 0 0.5rem;
+        font-size: 1.1rem;
+        color: #333;
+      }
+
+      .notes-count {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #3498db;
+        font-weight: 600;
+      }
+
+      .data-afegit {
+        margin: 0.25rem 0 0;
+        font-size: 0.85rem;
+        color: #999;
+      }
+    }
+
+    .btn-eliminar {
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+
+.sense-preferits {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+
+  p {
+    margin: 0.5rem 0;
+  }
+
+  .ajuda {
+    font-size: 0.9rem;
+    color: #999;
+  }
+}
+

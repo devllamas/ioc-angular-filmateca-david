@@ -4,10 +4,7 @@
     <p class="subtitle">Películes populars del nostre catàleg</p>
   </header>
 
-  <!-- Formulari de cerca -->
   <app-formulari-cerca></app-formulari-cerca>
-
-
   <!-- Estat: Carregant -->
   <div class="estat-carregant" *ngIf="peliculaService.estat() === 'carregant'">
     <div class="spinner"></div>
@@ -31,10 +28,12 @@
       <p>No s'han trobat películes populars</p>
     </div>
 
+
     <!-- Llistat d'elements -->
     <div class="elements-grid" *ngIf="peliculaService.pelicules().length > 0">
       <div class="element-card" *ngFor="let pelicula of peliculaService.pelicules()">
         <img [src]="pelicula.imatge" [alt]="pelicula.nom" class="element-imatge">
+        <button class="btn-preferit" [class.actiu]="preferitsService.esPreferit(pelicula.id)" (click)="togglePreferit(pelicula)">{{ preferitsService.esPreferit(pelicula.id) ? '★' : '☆' }}</button>
         <div class="element-info">
           <h3 class="element-nom">{{ pelicula.nom }}</h3>
           <p class="element-director">Director: {{ pelicula.director }}</p>
@@ -52,6 +51,7 @@
       </div>
     </div>
   </div>
+  <app-preferits-panel></app-preferits-panel>
 
   <!-- Estat: Inicial (no s'ha carregat res encara) -->
   <div class="estat-inicial" *ngIf="peliculaService.estat() === 'inicial'">
