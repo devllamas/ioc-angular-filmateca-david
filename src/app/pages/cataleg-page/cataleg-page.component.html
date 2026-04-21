@@ -4,6 +4,10 @@
     <p class="subtitle">Películes populars del nostre catàleg</p>
   </header>
 
+  <!-- Formulari de cerca -->
+  <app-formulari-cerca></app-formulari-cerca>
+
+
   <!-- Estat: Carregant -->
   <div class="estat-carregant" *ngIf="peliculaService.estat() === 'carregant'">
     <div class="spinner"></div>
