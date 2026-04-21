@@ -1,30 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { PeliculaService } from './services/pelicula.service';
+import { Component } from '@angular/core';
+import { CatalegPageComponent } from './pages/cataleg-page/cataleg-page.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [],
-  template: `
-    <div>
-      <h1>Prova del servei</h1>
-      <p>Obre la consola per veure els resultats</p>
-    </div>
-  `
+  imports: [CatalegPageComponent],
+  template: `<app-cataleg-page />`,
+  styles: [`
+    :host {
+      display: block;
+      min-height: 100vh;
+      background-color: #f5f5f5;
+    }
+  `]
 })
-export class AppComponent implements OnInit {
-  constructor(private peliculaService: PeliculaService) {}
-
-  ngOnInit() {
-    console.log('Estat inicial:', this.peliculaService.estat());
-
-    this.peliculaService.obtenirPopulars();
-
-    // Espera 1 segon i mostra resultats
-    setTimeout(() => {
-      console.log('Estat final:', this.peliculaService.estat());
-      console.log('Elements:', this.peliculaService.pelicules());
-      console.log('Error:', this.peliculaService.error());
-    }, 1500);
-  }
-}
+export class AppComponent {}

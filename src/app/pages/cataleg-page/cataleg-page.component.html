@@ -1,0 +1,56 @@
+<div class="cataleg-page">
+  <header class="page-header">
+    <h1>Catàleg de Películes</h1>
+    <p class="subtitle">Películes populars del nostre catàleg</p>
+  </header>
+
+  <!-- Estat: Carregant -->
+  <div class="estat-carregant" *ngIf="peliculaService.estat() === 'carregant'">
+    <div class="spinner"></div>
+    <p>Carregant películes...</p>
+  </div>
+
+  <!-- Estat: Error -->
+  <div class="estat-error" *ngIf="peliculaService.estat() === 'error'">
+    <div class="error-icon">⚠️</div>
+    <h2>Error al carregar películes</h2>
+    <p class="error-missatge">{{ peliculaService.error() }}</p>
+    <button class="btn-reintentar" (click)="reintentar()">
+      Reintentar
+    </button>
+  </div>
+
+  <!-- Estat: Èxit (elements carregats) -->
+  <div class="estat-exit" *ngIf="peliculaService.estat() === 'exit'">
+    <!-- Missatge si no hi ha elements -->
+    <div class="sense-resultats" *ngIf="peliculaService.pelicules().length === 0">
+      <p>No s'han trobat películes populars</p>
+    </div>
+
+    <!-- Llistat d'elements -->
+    <div class="elements-grid" *ngIf="peliculaService.pelicules().length > 0">
+      <div class="element-card" *ngFor="let pelicula of peliculaService.pelicules()">
+        <img [src]="pelicula.imatge" [alt]="pelicula.nom" class="element-imatge">
+        <div class="element-info">
+          <h3 class="element-nom">{{ pelicula.nom }}</h3>
+          <p class="element-director">Director: {{ pelicula.director }}</p>
+          <p class="element-any">Any: {{ pelicula.any }}</p>
+            <p class="element-durada">Durada: {{ pelicula.durada }} min</p>
+          <p class="element-categoria">{{ pelicula.categoria }}</p>
+          <p class="element-descripcio">{{ pelicula.descripcio }}</p>
+          <div class="element-footer">
+            <span class="element-preu">{{ pelicula.preu | number:'1.2-2' }}€</span>
+            <span class="element-stock" [class.baix-stock]="pelicula.stock < 20">
+              Stock: {{ pelicula.stock }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Estat: Inicial (no s'ha carregat res encara) -->
+  <div class="estat-inicial" *ngIf="peliculaService.estat() === 'inicial'">
+    <p>Inicialitzant...</p>
+  </div>
+</div>
