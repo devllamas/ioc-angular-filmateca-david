@@ -75,6 +75,38 @@ export class PreferitsService {
   }
 
   /**
+   * Afegeix una nota a un preferit
+   */
+  afegirNota(peliculaId: string, nota: string): void {
+    this.preferitsSignal.update(preferits =>
+      preferits.map(p => {
+        if (p.peliculaId === peliculaId) {
+          return { ...p, notes: [...p.notes, nota] };
+        }
+        return p;
+      })
+    );
+    this.desarPreferits();
+  }
+
+  /**
+   * Elimina una nota d'un preferit
+   */
+  eliminarNota(peliculaId: string, indexNota: number): void {
+    this.preferitsSignal.update(preferits =>
+      preferits.map(p => {
+        if (p.peliculaId === peliculaId) {
+          const notesActualitzades = [...p.notes];
+          notesActualitzades.splice(indexNota, 1);
+          return { ...p, notes: notesActualitzades };
+        }
+        return p;
+      })
+    );
+    this.desarPreferits();
+  }
+
+  /**
    * Comprova si un element és preferit
    */
   esPreferit(peliculaId: string): boolean {
