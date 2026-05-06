@@ -1,1 +1,56 @@
-<p>detail works!</p>
+<div class="container">
+  <!-- Loading -->
+  <div *ngIf="loading" class="loading">Carregant detall...</div>
+
+  <!-- Error -->
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+    <button (click)="goBack()" class="btn-primary">Tornar al llistat</button>
+  </div>
+
+  <!-- Detall -->
+  <div *ngIf="pelicula && !loading" class="detail">
+    <div class="detail-header">
+      <button (click)="goBack()" class="btn-back">← Tornar</button>
+      <span class="item-badge">ID: {{ pelicula.id }}</span>
+    </div>
+
+    <!-- Contenidor principal dividit (Imatge + Info) -->
+    <div class="detail-main">
+      
+      <!-- Esquerra: Cartell -->
+      <div class="detail-poster">
+        <img [src]="pelicula.imatge" [alt]="'Cartell de ' + pelicula.nom">
+      </div>
+
+      <!-- Dreta: Informació -->
+      <div class="detail-info">
+        <h1>{{ pelicula.nom }}</h1>
+
+        <!-- NOUS ATRIBUTS: Any, Categoria, Durada -->
+        <div class="badges">
+          <span class="badge">{{ pelicula.categoria }}</span>
+          <span class="badge">{{ pelicula.any }}</span>
+          <span class="badge">{{ pelicula.durada }} minuts</span>
+        </div>
+
+        <div class="detail-meta">
+          <!-- NOU ATRIBUT: Director -->
+          <span><strong>Director:</strong> {{ pelicula.director }}</span>
+          <span>Usuari ID: {{ pelicula.userId }}</span>
+        </div>
+
+        <div class="detail-content">
+          <h3>Descripció completa</h3>
+          <p>{{ pelicula.sinopsis }}</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="detail-actions">
+      <button (click)="goToPrevious()" [disabled]="peliculaId <= 1" class="btn-secondary">← Anterior</button>
+      <button (click)="goToNext()" [disabled]="peliculaId >= 100" class="btn-secondary">Següent →</button>
+    </div>
+  </div>
+</div>
