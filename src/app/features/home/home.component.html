@@ -10,9 +10,22 @@
   <!-- Llistat -->
   <div *ngIf="!loading && !error" class="items-grid">
     <div *ngFor="let item of items; trackBy: trackByPeliculaId" class="item-card" (click)="viewDetail(item.id)">
-      <h3>{{ item.nom }}</h3>
-      <p>{{ item.sinopsis | slice:0:100 }}...</p>
-      <span class="item-id">ID: {{ item.id }}</span>
+      <!-- NOVA IMATGE AQUÍ -->
+      <div class="image-wrapper">
+        <img [src]="item.imatge" [alt]="'Cartell de ' + item.nom" class="item-image">
+      </div>
+
+      <!-- CONTINGUT DE LA TARGETA -->
+      <div class="card-content">
+        <h3>{{ item.nom }}</h3>
+        <p class="item-sinopsis">{{ item.sinopsis | slice:0:100 }}...</p>
+        <div class="item-details">
+          <p><strong>Director:</strong> {{ item.director }}</p>
+          <p><strong>Any:</strong> {{ item.any }} | <strong>Durada:</strong> {{ item.durada }} min</p>
+          <p><strong>Categoria:</strong> {{ item.categoria }}</p>
+        </div>
+        <span class="item-id">ID: {{ item.id }}</span>
+      </div>
     </div>
   </div>
 </div>
