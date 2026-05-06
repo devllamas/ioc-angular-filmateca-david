@@ -1,12 +1,19 @@
-import { Component } from '@angular/core';
-
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Pelicula } from '../../../models/pelicula.model';
+import { CommonModule } from '@angular/common';
 @Component({
-  selector: 'app-item-card',
+  selector: 'app-pelicula-card',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './item-card.component.html',
-  styleUrl: './item-card.component.scss'
+  styleUrls: ['./item-card.component.scss'],
 })
-export class ItemCardComponent {
+export class PeliculaCardComponent {
+  @Input() pelicula!: Pelicula;
+  @Output() cardClick = new EventEmitter<number>();
 
+  onCardClick(): void {
+    this.cardClick.emit(this.pelicula.id);
+  }
 }

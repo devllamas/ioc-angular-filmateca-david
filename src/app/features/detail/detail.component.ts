@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PeliculaService } from '../../services/pelicula.service';
 import { Pelicula } from '../../models/pelicula.model';
@@ -9,13 +9,15 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.scss']
+  styleUrls: ['./detail.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DetailComponent implements OnInit {
   pelicula: Pelicula | null = null;
   loading = true;
   error = '';
   peliculaId: number = 0;
+  private cdr = inject(ChangeDetectorRef);
 
   constructor(
     private route: ActivatedRoute,
@@ -33,15 +35,18 @@ export class DetailComponent implements OnInit {
 
   loadItem(id: number): void {
     this.loading = true;
+    this.cdr.markForCheck(); // Assegura que el canvi de loading es detecta
     this.PeliculaService.getItemById(id).subscribe({
       next: (data) => {
         this.pelicula = data;
         this.loading = false;
+        this.cdr.markForCheck(); // Assegura que els canvis es detecten
       },
       error: (err) => {
         this.error = 'Element no trobat';
         this.loading = false;
         console.error(err);
+        this.cdr.markForCheck(); // Assegura que els canvis es detecten
       }
     });
   }

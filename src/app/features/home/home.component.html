@@ -7,25 +7,20 @@
   <!-- Error -->
   <div *ngIf="error" class="error">{{ error }}</div>
 
-  <!-- Llistat -->
-  <div *ngIf="!loading && !error" class="items-grid">
-    <div *ngFor="let item of items; trackBy: trackByPeliculaId" class="item-card" (click)="viewDetail(item.id)">
-      <!-- NOVA IMATGE AQUÍ -->
-      <div class="image-wrapper">
-        <img [src]="item.imatge" [alt]="'Cartell de ' + item.nom" class="item-image">
-      </div>
+  <!-- LLISTAT AMB SCROLL VIRTUAL -->
+  <!-- Recorda que 'viewport' ha de tenir height definit al CSS (ex: 80vh) -->
+  <cdk-virtual-scroll-viewport *ngIf="!loading && !error" itemSize="250" class="viewport">
+    
+    <!-- Iterem amb cdkVirtualFor en lloc de ngFor -->
+    <div *cdkVirtualFor="let item of items; trackBy: trackByPeliculaId" class="item-wrapper">
+      
+      <!-- Utilitzem el component presentacional (OnPush) que hem creat -->
+      <app-pelicula-card 
+        [pelicula]="item" 
+        (cardClick)="viewDetail($event)">
+      </app-pelicula-card>
 
-      <!-- CONTINGUT DE LA TARGETA -->
-      <div class="card-content">
-        <h3>{{ item.nom }}</h3>
-        <p class="item-sinopsis">{{ item.sinopsis | slice:0:100 }}...</p>
-        <div class="item-details">
-          <p><strong>Director:</strong> {{ item.director }}</p>
-          <p><strong>Any:</strong> {{ item.any }} | <strong>Durada:</strong> {{ item.durada }} min</p>
-          <p><strong>Categoria:</strong> {{ item.categoria }}</p>
-        </div>
-        <span class="item-id">ID: {{ item.id }}</span>
-      </div>
     </div>
-  </div>
+
+  </cdk-virtual-scroll-viewport>
 </div>

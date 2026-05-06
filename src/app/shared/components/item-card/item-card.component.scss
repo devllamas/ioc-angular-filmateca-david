@@ -1,0 +1,88 @@
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+
+.item-wrapper {
+  height: 450px; /* Obligatori: IDÈNTIC al teu itemSize="450" de l'HTML */
+  box-sizing: border-box; /* MÀGIA: Fa que el padding estigui inclòs dins dels 450px, no s'hi sumi */
+  padding: 15px; /* Espaiat entre targetes */
+  overflow: hidden; /* Evita que res sobresurti i trenqui els càlculs */
+}
+
+.image-wrapper {
+  width: 120px; 
+  height: 100%;
+  flex-shrink: 0;
+  background-color: #f5f5f5;
+  border-right: 1px solid #eee;
+  
+  /* --- NOVES PROPIETATS PER LA IMATGE DE FONS --- */
+  background-size: contain; /* Funciona igual que l'object-fit: contain */
+  background-position: center center; /* Centrem la imatge al mig del requadre */
+  background-repeat: no-repeat; /* Evitem que la imatge es repeteixi si és petita */
+}
+
+
+.card-content {
+  padding: 1.5rem; /* El padding original que tenia .item-card */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Fa que l'ID quedi abaix de tot si hi ha poc text */
+}
+
+
+.item-card h3 {
+  margin: 0 0 1rem 0;
+  color: #2196F3;
+}
+
+.item-card {
+  height: 100%; 
+  margin: 0;
+  background: white;
+  
+  box-sizing: border-box; 
+  
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden; 
+  display: flex;
+  flex-direction: row; 
+  cursor: pointer;
+  transition: all 0.2s;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.item-id {
+  margin-top: auto; /* Això empeny l'ID cap avall de tot */
+  align-self: flex-start;
+  background: #E3F2FD;
+  color: #1976D2;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.item-sinopsis {
+  color: #666;
+  margin: 0 0 0.5rem 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* Ajuntem les línies dels detalls */
+.item-details p {
+  margin: 0.15rem 0; /* Gairebé no hi ha marge entre el director i l'any */
+  font-size: 0.85rem;
+}
+h3 {
+  margin: 0 0 0.25rem 0; /* Reduïm molt el marge inferior */
+  font-size: 1.1rem;
+  color: #2196F3;
+}

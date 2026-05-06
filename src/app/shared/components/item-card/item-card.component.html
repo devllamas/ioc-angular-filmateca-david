@@ -1,1 +1,19 @@
-<p>item-card works!</p>
+<div class="item-card" (click)="onCardClick()">
+  <!-- NOU IMAGE WRAPPER AMB FONS DINÀMIC -->
+  <div 
+    class="image-wrapper" 
+    [style.backgroundImage]="'url(' + pelicula.imatge + ')'"
+    [attr.aria-label]="'Cartell de ' + pelicula.nom"
+    role="img">
+  </div>
+  <div class="card-content">
+    <h3>{{ pelicula.nom }}</h3>
+    <p class="item-sinopsis">{{ pelicula.sinopsis | slice:0:200 }}...</p>
+    <div class="item-details">
+      <p><strong>Director:</strong> {{ pelicula.director }}</p>
+      <p><strong>Any:</strong> {{ pelicula.any }} | <strong>Durada:</strong> {{ pelicula.durada }} min</p>
+      <p><strong>Categoria:</strong> {{ pelicula.categoria }}</p>
+    </div>
+    <span class="item-id">ID: {{ pelicula.id }}</span>
+  </div>
+</div>
