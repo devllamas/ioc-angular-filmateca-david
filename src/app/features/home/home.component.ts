@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
   }
 
   viewDetail(id: number): void {
-    this.router.navigate(['/item', id]);
+    this.router.navigate(['/pelicula', id]);
   }
 
   trackByPeliculaId(index: number, item: Pelicula): number {
