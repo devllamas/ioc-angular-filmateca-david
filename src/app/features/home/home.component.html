@@ -1,3 +1,18 @@
-<div class="container" style="margin-top: 2rem;">
-  <h2>¡Home funciona!</h2>
+<div class="container">
+  <h2>Catàleg complet ({{ items.length }} elements)</h2>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="loading">Carregant elements...</div>
+
+  <!-- Error -->
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <!-- Llistat -->
+  <div *ngIf="!loading && !error" class="items-grid">
+    <div *ngFor="let item of items; trackBy: trackByPeliculaId" class="item-card" (click)="viewDetail(item.id)">
+      <h3>{{ item.nom }}</h3>
+      <p>{{ item.sinopsis | slice:0:100 }}...</p>
+      <span class="item-id">ID: {{ item.id }}</span>
+    </div>
+  </div>
 </div>
