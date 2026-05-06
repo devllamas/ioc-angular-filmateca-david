@@ -1,1 +1,33 @@
-<p>login works!</p>
+<div class="container">
+  <div class="login-box">
+    <h2>Iniciar sessió</h2>
+    <p class="subtitle">Accedeix a la teva zona de preferits</p>
+
+    <form (ngSubmit)="onSubmit()" class="login-form">
+      <!-- Usuari -->
+      <div class="form-group">
+        <label for="username">Usuari:</label>
+        <input type="text" id="username" [(ngModel)]="username" name="username" placeholder="Introdueix el teu usuari" [disabled]="loading" class="form-input">
+      </div>
+
+      <!-- Contrasenya -->
+      <div class="form-group">
+        <label for="password">Contrasenya:</label>
+        <input type="password" id="password" [(ngModel)]="password" name="password" placeholder="Mínim 4 caràcters" [disabled]="loading" class="form-input">
+      </div>
+
+      <!-- Error -->
+      <div *ngIf="error" class="error-message">{{ error }}</div>
+
+      <!-- Submit -->
+      <button type="submit" [disabled]="loading" class="btn-login">
+        <span *ngIf="!loading">Entrar</span>
+        <span *ngIf="loading">Autenticant...</span>
+      </button>
+    </form>
+
+    <div class="hint">
+      <strong>Hint:</strong> Qualsevol usuari i contrasenya ≥4 caràcters funciona
+    </div>
+  </div>
+</div>

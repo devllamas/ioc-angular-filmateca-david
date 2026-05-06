@@ -8,7 +8,15 @@
       <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">Inici</a>
       <a routerLink="/search" routerLinkActive="active" class="nav-link">Cerca</a>
       <a routerLink="/favorites" routerLinkActive="active" class="nav-link">Preferits</a>
-      <a routerLink="/login" routerLinkActive="active" class="nav-link">Login</a>
+
+      <!-- Mostra Login si NO està autenticat -->
+      <a *ngIf="!currentUser" routerLink="/login" routerLinkActive="active" class="nav-link">Login</a>
+
+      <!-- Mostra usuari i Logout si està autenticat -->
+      <div *ngIf="currentUser" class="user-menu">
+        <span class="username">{{ currentUser.username }}</span>
+        <button (click)="logout()" class="btn-logout">Sortir</button>
+      </div>
     </nav>
   </div>
 </header>
