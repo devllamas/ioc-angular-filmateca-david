@@ -1,9 +1,9 @@
 .app-footer {
-  background-color: #263238; // Blau grisenc fosc
+  background-color: #2196F3; // Blau grisenc fosc
   color: #ffffff;
   padding: 2rem 1rem;
   margin-top: auto; // Això ajuda a empènyer el footer al final si fas servir flexbox al pare
-  border-top: 4px solid #2196F3; // Detall amb el color principal de l'app
+ // Detall amb el color principal de l'app
 }
 
 .footer-content {
@@ -19,7 +19,6 @@
 .footer-section {
   h3 {
     margin: 0;
-    color: #2196F3;
     font-size: 1.2rem;
   }
   
