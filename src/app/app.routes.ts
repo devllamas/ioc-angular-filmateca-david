@@ -23,5 +23,5 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { path: '404', component: NotFoundComponent },
-  { path: '**', redirectTo: '/404' }
+  { path: '**', redirectTo: '/home' }
 ];

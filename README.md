@@ -1,27 +1,53 @@
-# IocAngularFilmatecaDavid
+# Filmoteca IOC - Catàleg Universal de Pel·lícules
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
+## 1. Descripció del projecte
+**Nom de l'aplicació:** ioc-angular-filmateca-david
 
-## Development server
+Aquesta és una aplicació de gestió de catàleg cinematogràfic desenvolupada amb **Angular 17+**. El projecte s'ha dissenyat posant un focus especial en el rendiment i l'eficiència de renderitzat. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+L'aplicació permet navegar per un llistat extens de pel·lícules de manera fluida gràcies a la implementació de **Virtual Scrolling** i una arquitectura de components basada en l'estratègia **OnPush**. Aquestes optimitzacions redueixen dràsticament el consum de memòria i el nombre de cicles de detecció de canvis que el navegador ha de processar.
 
-## Code scaffolding
+## 2. Mapa de rutes
+L'aplicació utilitza el sistema de rutes d'Angular per separar la vista principal del detall de cada pel·lícula:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+| Path | Component | Accés |
+| :--- | :--- | :--- |
+| `''` (buit) | `HomeComponent` | Públic |
+| `'/home'` | `HomeComponent` | Públic |
+| `'/pelicula/:id'` | `DetailComponent` | Públic |
+| `'**'` (comodí) | `HomeComponent` | Públic |
 
-## Build
+## 3. Instruccions d'execució en local
+Segueix aquests passos per configurar i executar el projecte en el teu ordinador:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. **Clonar el repositori:**
+   ```bash
+   git clone [url-repositori]
 
-## Running unit tests
+2. Entrar al directori del projecte
+cd ioc-angular-filmateca-david
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. Instal·lar les dependències
+npm install
 
-## Running end-to-end tests
+4. Executar el servidor de desenvolupament
+ng serve
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+5. Accedir a l'aplicació
+Obrir http://localhost:4200 al navegador.
 
-## Further help
+## 4. Build de producció
+Per generar una versió optimitzada per a ser desplegada en un servidor real segueix aquests pasos:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Executar la comanda del build
+ng build
+
+2. Els fitxers es generaran a la carpeta /dist
+
+3. La mida aproximada del bundle és d'apoximadament 374,44kB.
+
+## 5. Credencials de prova
+
+El sistema d'autenticació està configurat per acceptar qualsevol usuari i contrasenya amb un mínim de 4 caràcters per a propòsits de demostració.
+
+Desenvolupat com a part de la pràctica d'Angular de l'IOC.
